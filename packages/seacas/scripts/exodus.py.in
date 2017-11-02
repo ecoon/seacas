@@ -3479,11 +3479,11 @@ class exodus:
     self.io_ws = c_int(io_size)
     self.version = c_float(0.0)
     if self.modeChar.lower() in ["a", "r"]: # open existing file
-      self.fileId = EXODUS_LIB.ex_open_int(self.fileName, self.mode,
-                                           byref(self.comp_ws),
-                                           byref(self.io_ws),
-                                           byref(self.version),
-                                           EX_API_VERSION_NODOT)
+      self.fileId = c_int(EXODUS_LIB.ex_open_int(self.fileName, self.mode,
+                                                 byref(self.comp_ws),
+                                                 byref(self.io_ws),
+                                                 byref(self.version),
+                                                 EX_API_VERSION_NODOT))
     else: # create file
       if io_size == 0:
         io_size = 8
@@ -3494,10 +3494,10 @@ class exodus:
 
   def __create(self):
     cMode = c_int(EX_NOCLOBBER)
-    self.fileId = EXODUS_LIB.ex_create_int(self.fileName, cMode,
-                                           byref(self.comp_ws),
-                                           byref(self.io_ws),
-                                           EX_API_VERSION_NODOT)
+    self.fileId = c_int(EXODUS_LIB.ex_create_int(self.fileName, cMode,
+                                                 byref(self.comp_ws),
+                                                 byref(self.io_ws),
+                                                 EX_API_VERSION_NODOT))
 
   # --------------------------------------------------------------------
 
