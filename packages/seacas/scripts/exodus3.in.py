@@ -2343,7 +2343,7 @@ class exodus:
             numVals = self.num_nodes()
         elif objType in ['EX_ELEM_BLOCK', 'EX_FACE_BLOCK', 'EX_EDGE_BLOCK']:
             (_elemType, numVals, _nodesPerElem, _numAttr) = self.__ex_get_block(objType, entityId)
-        elif objType in ['EX_NODE_SET', 'EX_EDGE_SET', 'EX_FACE_SET', 'EX_SIDE_SET']:
+        elif objType in ['EX_NODE_SET', 'EX_EDGE_SET', 'EX_FACE_SET', 'EX_ELEM_SET', 'EX_SIDE_SET']:
             (numVals, _numDistFactInSet) = self.__ex_get_set_param(objType, entityId)
 
         return numVals
